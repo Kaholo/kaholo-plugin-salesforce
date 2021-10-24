@@ -34,9 +34,12 @@ module.exports = {
         if (typeof(value) === "string") {
             const obj = {};
             value.split("\n").map(line=>{
-                const [key, ...value] = line.trim().split("="); 
-                if (!key || !value.length) throw "Unsupported object format";
-                obj[key] = value.join("=");
+                var [key, ...value] = line.split("=");
+                if (!value.length) throw "Unsupported object format";
+                key = key.trim();
+                value = value.join("=").trim();
+                if (!key || !value) throw "Empty key or value in string:\n"+value;
+                obj[key] = value;
             })
             return obj;
         }
