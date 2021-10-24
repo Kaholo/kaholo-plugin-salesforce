@@ -1,0 +1,296 @@
+{
+    "name": "SalesForce",
+    "type": "executer",
+    "execProgram": "node",
+    "main": "app.js",
+    "imgUrl": "logo.png",
+    "version": "1.0.0",
+    "description": "Integration with SalesForce API.",
+    "category": "CRM",
+    "keywords": ["ticket", "card", "troubleticket", "malfunction", "incident", "notification", "Atlassian", "sprint", "monitoring", "CRM"],
+    "settings": [
+        {
+            "name": "url",
+            "viewName": "SalesForce URL",
+            "type": "string",
+            "placeholder": "https://example.my.salesforce.com",
+            "description": "The default SalesForce URL to connect to for API requests to Salesforce."
+        },
+        {
+            "name": "username",
+            "viewName": "Username",
+            "type": "string",
+            "description": "The username of the default user to authenticate to Salesforce with."
+        },
+        {
+            "name": "password",
+            "viewName": "Password",
+            "type": "vault",
+            "description": "The password of the default user to authenticate to Salesforce with."
+        },
+        {
+            "name": "token",
+            "viewName": "Security Token",
+            "type": "vault",
+            "description": "The security token of the default user to authenticate to Salesforce with.",
+            "learnUrl": "https://help.salesforce.com/s/articleView?id=sf.user_security_token.htm&type=5"
+        }
+    ],
+    "methods": [
+        {
+            "name": "viewObjects",
+            "viewName": "View Objects",
+            "params": [
+                {
+                    "name": "url",
+                    "viewName": "SalesForce URL",
+                    "type": "string",
+                    "placeholder": "https://example.my.salesforce.com",
+                    "description": "The URL of the SalesForce environment to connect to for this request."
+                },
+                {
+                    "name": "username",
+                    "viewName": "Username",
+                    "type": "string",
+                    "description": "The username of the user to authenticate to Salesforce with."
+                },
+                {
+                    "name": "password",
+                    "viewName": "Password",
+                    "type": "vault",
+                    "description": "The password of the user to authenticate to Salesforce with."
+                },
+                {
+                    "name": "token",
+                    "viewName": "Security Token",
+                    "type": "vault",
+                    "description": "The security token of the  user to authenticate to Salesforce with.",
+                    "learnUrl": "https://help.salesforce.com/s/articleView?id=sf.user_security_token.htm&type=5"
+                },
+                {
+                    "name": "objType",
+                    "viewName": "Object Type",
+                    "type": "string",
+                    "description": "The type of object to view."
+                },
+                {
+                    "name": "where",
+                    "viewName": "Match Fields",
+                    "type": "text",
+                    "placeholder": "FirstName=Demo%\nLastName=Test",
+                    "description": "Only return data on objects that match the specified fields. Must be in the format of FieldName=MatchValue. Can also include '%' wildcard. You can specify multiple fields by seperating each with a new line. Also accepts an object from code."
+                },
+                {
+                    "name": "selectedFields",
+                    "viewName": "Select Fields",
+                    "type": "text",
+                    "placeholder": "FirstName\nLastName\n",
+                    "description": "Only return selected fields of the objects. You can specify multiple fields by seperating each with a new line or with a comma. Also accepts array from code."
+                },
+                {
+                    "name": "orderBy",
+                    "viewName": "Order By",
+                    "type": "text",
+                    "placeholder": "Industry\n-FirstName\nId",
+                    "description": "The fields to order the results by. If a field is prefixed with a '-' it will be orderd in descending order. By  order will be ascending. You can specify multiple fields by seperating each with a new line. Also accepts array from code."
+                },
+                {
+                    "name": "limit",
+                    "viewName": "Limit",
+                    "type": "string",
+                    "placeholder": "50",
+                    "description": "The maximum number of records to return."
+                },
+                {
+                    "name": "offset",
+                    "viewName": "Offset",
+                    "type": "string",
+                    "placeholder": "100",
+                    "description": "The start index to start returning results from. For example, if Offset = 100 than the results won't contain the 100 first results, and will contain the results starting from the 101th object."
+                }
+            ]
+        },
+        {
+            "name": "editObjects",
+            "viewName": "Edit Objects",
+            "params": [
+                {
+                    "name": "url",
+                    "viewName": "SalesForce URL",
+                    "type": "string",
+                    "placeholder": "https://example.my.salesforce.com",
+                    "description": "The URL of the SalesForce environment to connect to for this request."
+                },
+                {
+                    "name": "username",
+                    "viewName": "Username",
+                    "type": "string",
+                    "description": "The username of the user to authenticate to Salesforce with."
+                },
+                {
+                    "name": "password",
+                    "viewName": "Password",
+                    "type": "vault",
+                    "description": "The password of the user to authenticate to Salesforce with."
+                },
+                {
+                    "name": "token",
+                    "viewName": "Security Token",
+                    "type": "vault",
+                    "description": "The security token of the  user to authenticate to Salesforce with.",
+                    "learnUrl": "https://help.salesforce.com/s/articleView?id=sf.user_security_token.htm&type=5"
+                },
+                {
+                    "name": "objType",
+                    "viewName": "Object Type",
+                    "type": "string",
+                    "description": "The type of object to update."
+                },
+                {
+                    "name": "where",
+                    "viewName": "Match Fields",
+                    "type": "text",
+                    "placeholder": "FirstName=Demo%\nCompany=ExampleComp",
+                    "description": "Only update data on objects that match the specified fields. Must be in the format of FieldName=MatchValue. Can also include '%' wildcard. You can specify multiple fields by seperating each with a new line. Also accepts an object from code."
+                },
+                {
+                    "name": "updateData",
+                    "viewName": "Update Fields",
+                    "type": "text",
+                    "placeholder": "Status=Success\nPayment=Credit Card",
+                    "description": "Update all matched objects with specified field values. Must be in the format of FieldName=NewValue. You can specify multiple fields by seperating each with a new line. Also accepts an object from code."
+                }
+            ]
+        },
+        {
+            "name": "createObject",
+            "viewName": "Create New Object",
+            "params": [
+                {
+                    "name": "url",
+                    "viewName": "SalesForce URL",
+                    "type": "string",
+                    "placeholder": "https://example.my.salesforce.com",
+                    "description": "The URL of the SalesForce environment to connect to for this request."
+                },
+                {
+                    "name": "username",
+                    "viewName": "Username",
+                    "type": "string",
+                    "description": "The username of the user to authenticate to Salesforce with."
+                },
+                {
+                    "name": "password",
+                    "viewName": "Password",
+                    "type": "vault",
+                    "description": "The password of the user to authenticate to Salesforce with."
+                },
+                {
+                    "name": "token",
+                    "viewName": "Security Token",
+                    "type": "vault",
+                    "description": "The security token of the  user to authenticate to Salesforce with.",
+                    "learnUrl": "https://help.salesforce.com/s/articleView?id=sf.user_security_token.htm&type=5"
+                },
+                {
+                    "name": "objType",
+                    "viewName": "Object Type",
+                    "type": "string",
+                    "description": "The type of object to create a new instance of."
+                },
+                {
+                    "name": "insertData",
+                    "viewName": "Object Data",
+                    "type": "text",
+                    "placeholder": "FirstName=Demo1\nLastName=Smith",
+                    "description": "Initial values of the fields of the object to create. Must be in the format of FieldName=Value. You can specify multiple fields by seperating each with a new line. Also accepts an object from code."
+                }
+            ]
+        },
+        {
+            "name": "deleteObjects",
+            "viewName": "Delete Objects",
+            "params": [
+                {
+                    "name": "url",
+                    "viewName": "SalesForce URL",
+                    "type": "string",
+                    "placeholder": "https://example.my.salesforce.com",
+                    "description": "The URL of the SalesForce environment to connect to for this request."
+                },
+                {
+                    "name": "username",
+                    "viewName": "Username",
+                    "type": "string",
+                    "description": "The username of the user to authenticate to Salesforce with."
+                },
+                {
+                    "name": "password",
+                    "viewName": "Password",
+                    "type": "vault",
+                    "description": "The password of the user to authenticate to Salesforce with."
+                },
+                {
+                    "name": "token",
+                    "viewName": "Security Token",
+                    "type": "vault",
+                    "description": "The security token of the  user to authenticate to Salesforce with.",
+                    "learnUrl": "https://help.salesforce.com/s/articleView?id=sf.user_security_token.htm&type=5"
+                },
+                {
+                    "name": "objType",
+                    "viewName": "Object Type",
+                    "type": "string",
+                    "description": "The type of object to delete."
+                },
+                {
+                    "name": "where",
+                    "viewName": "Match Fields",
+                    "type": "text",
+                    "placeholder": "FirstName=Demo%\nLastName=Test",
+                    "description": "Only delete objects that match the specified fields and values. Must be in the format of FieldName=MatchValue. Can also include '%' wildcard. You can specify multiple fields by seperating each with a new line. Also accepts an object from code."
+                }
+            ]
+        },
+        {
+            "name": "executeSoqlQuery",
+            "viewName": "Execute SOQL Query",
+            "params": [
+                {
+                    "name": "url",
+                    "viewName": "SalesForce URL",
+                    "type": "string",
+                    "placeholder": "https://example.my.salesforce.com",
+                    "description": "The URL of the SalesForce environment to connect to for this request."
+                },
+                {
+                    "name": "username",
+                    "viewName": "Username",
+                    "type": "string",
+                    "description": "The username of the user to authenticate to Salesforce with."
+                },
+                {
+                    "name": "password",
+                    "viewName": "Password",
+                    "type": "vault",
+                    "description": "The password of the user to authenticate to Salesforce with."
+                },
+                {
+                    "name": "token",
+                    "viewName": "Security Token",
+                    "type": "vault",
+                    "description": "The security token of the  user to authenticate to Salesforce with.",
+                    "learnUrl": "https://help.salesforce.com/s/articleView?id=sf.user_security_token.htm&type=5"
+                },
+                {
+                    "name": "query",
+                    "viewName": "SOQL Query",
+                    "type": "text",
+                    "placeholder": "SELECT Id, Name\nFROM Account\nWHERE Name = 'Sandy'",
+                    "description": "Select objects using the specified SOQL query.",
+                    "learnUrl": "https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql.htm"
+                }
+            ]
+        }
+    ]
+}
